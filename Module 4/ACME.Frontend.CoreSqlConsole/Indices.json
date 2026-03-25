@@ -1,0 +1,26 @@
+﻿{
+  "automatic": true,
+  "indexingMode": "Consistent",
+  "includedPaths": [
+    {
+      "path": "/*"
+    }
+  ],
+  "excludedPaths": [
+    {
+      "path": "/_etag/?"
+    }
+  ],
+  "compositeIndexes": [
+    [
+      {
+        "path": "/Brandid",
+        "order": "ascending"
+      },
+      {
+        "path": "/ProductGroupId",
+        "order": "descending"
+      }
+    ]
+  ]
+}

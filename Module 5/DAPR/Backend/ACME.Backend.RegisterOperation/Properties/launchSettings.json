@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "ACME.Backend.RegisterOpertion": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7012"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "httpPort": 32048,
+      "useSSL": false
+    }
+  }
+}

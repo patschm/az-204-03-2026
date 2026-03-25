@@ -1,0 +1,43 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calculator-web
+spec:
+  selector:
+    matchLabels:
+      app: calculator-web-pod
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        app: calculator-web-pod
+        tier: frontend
+    spec:
+      containers:
+      - name: calculator-web
+        image: psrepo.azurecr.io/frontend:57
+        env:
+        - name: REST_URL
+          value: "http://20.50.253.61/calculator/"  # "calcapi" for ClusterIP
+        - name: CON_APPCONFIG
+          value: "Endpoint=https://ps-app-config.azconfig.io;Id=BNnC-l9-s0:na8F2EWbGTPJBlQ3+06o;Secret=iVmf6S/fNUp3xroO9jHmM9KveEPYcQibUUV/48ytPy0="  #"#{AppConfig}#"    # Used with 'Replace Token' task from Market Place
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name:  calcweb
+spec:
+  selector:
+    app:  calculator-web-pod
+    tier: frontend
+  type:  LoadBalancer
+  ports:
+  - protocol: TCP
+    port:  80
+    targetPort: 80
