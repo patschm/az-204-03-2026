@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using viewer.Hubs;
 using viewer.Models;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
 
 namespace viewer.Controllers
 {
@@ -55,8 +56,8 @@ namespace viewer.Controllers
                 var webhookRequestOrigin = HttpContext.Request.Headers["WebHook-Request-Origin"].FirstOrDefault();
                 var webhookRequestCallback = HttpContext.Request.Headers["WebHook-Request-Callback"];
                 var webhookRequestRate = HttpContext.Request.Headers["WebHook-Request-Rate"];
-                HttpContext.Response.Headers.Add("WebHook-Allowed-Rate", "*");
-                HttpContext.Response.Headers.Add("WebHook-Allowed-Origin", webhookRequestOrigin);
+                HttpContext.Response.Headers.Append("WebHook-Allowed-Rate", "*");
+                HttpContext.Response.Headers.Append("WebHook-Allowed-Origin", webhookRequestOrigin);
             }
             return Ok();
         }

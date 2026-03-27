@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178
+# Visual Studio Version 18
+VisualStudioVersion = 18.4.11612.150 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventGridEndpoint", "EventGridEndpoint\viewer\EventGridEndpoint.csproj", "{FF8FDD9F-E2B7-40E8-9E0C-16A6E2A31D0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvtGridCmds", "EvtGridCmds\EvtGridCmds.csproj", "{6452E82C-B5FD-AD11-3DCE-106DBD309A22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{FF8FDD9F-E2B7-40E8-9E0C-16A6E2A31D0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF8FDD9F-E2B7-40E8-9E0C-16A6E2A31D0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF8FDD9F-E2B7-40E8-9E0C-16A6E2A31D0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6452E82C-B5FD-AD11-3DCE-106DBD309A22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6452E82C-B5FD-AD11-3DCE-106DBD309A22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6452E82C-B5FD-AD11-3DCE-106DBD309A22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6452E82C-B5FD-AD11-3DCE-106DBD309A22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

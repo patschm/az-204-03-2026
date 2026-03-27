@@ -5,7 +5,7 @@ namespace SubscriptionClient;
 
 class Program
 {
-    static string EndPoint = "ps-namespace.servicebus.windows.net";
+    static string EndPoint = "ps-queues.servicebus.windows.net";
     static (string Name, string KeY) SasKeyReader = ("lezers", "");
     static string TopicName = "psshop";
 

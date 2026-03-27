@@ -1,0 +1,14 @@
+@ServiceABC_HostAddress = https://localhost:7033
+
+GET {{ServiceABC_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+Post {{ServiceABC_HostAddress}}/weatherforecast/
+Content-Type: application/json  
+ {
+    "date": "2027-03-27",
+    "temperatureC": 8,
+    "temperatureF": 90,
+    "summary": "Freezing"
+  }

@@ -6,7 +6,7 @@ namespace WebSite.Controllers
 {
     public class CalculatorController : Controller
     {
-        private IFeatureManager _features;
+        private readonly IFeatureManager _features;
         private readonly IConfiguration _configuration;
 
         public CalculatorController(IFeatureManager features, IConfiguration configuration)

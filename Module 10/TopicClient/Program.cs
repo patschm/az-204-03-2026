@@ -6,15 +6,15 @@ namespace TopicClient;
 
 class Program
 {
-    static string EndPoint = "ps-namespace.servicebus.windows.net";
-    static (string Name, string Key) SasKeyManager = ("admin", "");
-    static (string Name, string Key) SasKeyWriter = ("schrijver", "");
+    static string EndPoint = "ps-queues.servicebus.windows.net";
+    static (string Name, string Key) SasKeyManager = ("admin", "jOTCf7ku2U6l2XV/Zi48RntcB+jG4qxup+ASbICpTGw=");
+    static (string Name, string Key) SasKeyWriter = ("schrijvert", "");
     static string TopicName = "psshop";
 
     static async Task Main(string[] args)
     {
        //await ManageTopicAsync();
-      // await ManageSubscriptionsAsync();
+       //await ManageSubscriptionsAsync();
 
       await WriteToTopicAsync();
         Console.WriteLine("Done");

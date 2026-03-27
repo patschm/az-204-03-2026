@@ -20,7 +20,7 @@ namespace AppInsightTest
         static void Main(string[] args)
         {
             configuration = TelemetryConfiguration.CreateDefault();
-            configuration.ConnectionString = "InstrumentationKey=53b914e3-9d82-418f-ae41-049bb8115093;IngestionEndpoint=https://westeurope-5.in.applicationinsights.azure.com/;LiveEndpoint=https://westeurope.livediagnostics.monitor.azure.com/;ApplicationId=97445a07-db31-4976-acb0-296139fb70db";
+            configuration.ConnectionString = "";
             TeleChannels(configuration, local:false);
 
 
@@ -52,7 +52,7 @@ namespace AppInsightTest
                 _27McChannel channel = new _27McChannel {
                     FileName = @"E:\logging.log"
                 };
-                configuration.TelemetryChannel = channel; 
+                //configuration.TelemetryChannel = channel; 
                 //Console.WriteLine($"Writing to: {channel.FileName}");
             }
             else

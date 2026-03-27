@@ -3,7 +3,6 @@ using Microsoft.Extensions.Configuration.AzureAppConfiguration;
 using Microsoft.FeatureManagement;
 
 var builder = WebApplication.CreateBuilder(args);
-
 var connectionString = Environment.GetEnvironmentVariable("CON_APPCONFIG");
 var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
@@ -12,11 +11,11 @@ var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 builder.Configuration.AddAzureAppConfiguration(options =>
 {
     options.Connect(connectionString)
-        //.Select(KeyFilter.Any, "Production")
+        .Select(KeyFilter.Any, "Production")
         .UseFeatureFlags(opts =>
         {
-            //opts.Select(KeyFilter.Any, "Production");
-            opts.CacheExpirationInterval = TimeSpan.FromSeconds(10);
+            opts.Select(KeyFilter.Any, "Production");
+            opts.SetRefreshInterval(TimeSpan.FromSeconds(10));
         });
     options.ConfigureKeyVault(conf =>
     {

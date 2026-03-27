@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Basics/Basics.csproj" Id="3884aefe-b515-4be2-b658-72f5f4855fac" />
+  <Project Path="Pagina/Pagina.csproj" />
+  <Project Path="ServiceABC/ServiceABC.csproj" Id="211b46fc-d241-4c99-b5f3-f681dc628937" />
+</Solution>

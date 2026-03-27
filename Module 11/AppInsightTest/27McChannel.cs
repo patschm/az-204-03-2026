@@ -1,9 +1,5 @@
 ﻿using Microsoft.ApplicationInsights.Channel;
-using Microsoft.ApplicationInsights.Extensibility.Implementation;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+
 
 namespace AppInsightTest
 {

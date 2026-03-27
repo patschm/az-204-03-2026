@@ -5,14 +5,14 @@ namespace QueueReader;
 
 class Program
 {
-    static string EndPoint = "ps-namespace.servicebus.windows.net";
-    static (string Name, string KeY) SasKeyReader = ("lezert", "");
-    static string QueueName = "kueue";
+    static string EndPoint = "sb://ps-queues.servicebus.windows.net";
+    static (string Name, string KeY) SasKeyReader = ("Lezert", "");
+    static string QueueName = "kueueueue";
 
     static async Task Main(string[] args)
     {
-        await ReadQueueAsync();
-        //await ReadQueueProcessorAsync();
+        //await ReadQueueAsync();
+        await ReadQueueProcessorAsync();
         Console.WriteLine("Press Enter to Quit");
         Console.ReadLine();
     }
@@ -21,7 +21,7 @@ class Program
     {
         var cred = new AzureNamedKeyCredential(SasKeyReader.Name, SasKeyReader.KeY);
         var client = new ServiceBusClient(EndPoint, cred);
-        var receiver = client.CreateReceiver(QueueName);
+        ServiceBusReceiver receiver = client.CreateReceiver(QueueName);
         
         int teller = 0;
         do
@@ -33,7 +33,7 @@ class Program
             {
                
                 continue;
-               // throw new Exception("Ooops");
+               //throw new Exception("Ooops");
             }
             Console.WriteLine(data);
             await receiver.CompleteMessageAsync(msg);
@@ -47,14 +47,14 @@ class Program
     {
         var cred = new AzureNamedKeyCredential(SasKeyReader.Name, SasKeyReader.KeY);
         var client = new ServiceBusClient(EndPoint, cred);
-        //var receiver = client.CreateProcessor(QueueName, new ServiceBusProcessorOptions { AutoCompleteMessages=false});
-        var opt = new ServiceBusSessionProcessorOptions
-        {
-            AutoCompleteMessages = false
-        };
-        opt.SessionIds.Add("me0");
+        var receiver = client.CreateProcessor(QueueName, new ServiceBusProcessorOptions { AutoCompleteMessages=false});
+        //var opt = new ServiceBusSessionProcessorOptions
+        //{
+        //    AutoCompleteMessages = false
+        //};
+        //opt.SessionIds.Add("me0");
 
-        var receiver = client.CreateSessionProcessor(QueueName, opt);
+        //var receiver = client.CreateSessionProcessor(QueueName, opt);
             
         
         int i = 0;
@@ -64,7 +64,10 @@ class Program
             Console.WriteLine($"Lock Duration: {msg.LockedUntil} Lock Token: {msg.LockToken} (Session: {msg.SessionId})");
             var data = msg.Body.ToString();
             if (++i % 5 == 0)
+            {
+                await evtArg.AbandonMessageAsync(msg);
                 return;
+            }
                 //throw new Exception("Ooops");
             Console.WriteLine(data);
             await evtArg.CompleteMessageAsync(msg);

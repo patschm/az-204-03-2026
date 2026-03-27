@@ -9,10 +9,10 @@ namespace AppConfig;
 internal class Program
 {
 
-    const string conStr = "";
+    const string conStr = "Endpoint=";
     static async Task Main(string[] args)
     {
-       // await ReadConfigurationLocalAsync();
+       //await ReadConfigurationLocalAsync();
         await ReadAppConfigurationAsync();
 
         Console.ReadLine();
@@ -54,7 +54,9 @@ internal class Program
             });
             //var omgeving = Environment.GetEnvironmentVariable("OMGEVING");
             //Console.WriteLine(omgeving);
-            opts.Connect(conStr).Select("*", "Production").TrimKeyPrefix("AppConvig:");//.Select("*", "Production").TrimKeyPrefix("AppConfig:MySetings:");
+            opts.Connect(conStr)
+                .Select("*", "Production")
+                .TrimKeyPrefix("AppConfig:");//.Select("*", "Production").TrimKeyPrefix("AppConvig:");//.Select("*", "Production").TrimKeyPrefix("AppConfig:MySetings:");
             //    .Select(KeyFilter.Any, "Production")
             //    .TrimKeyPrefix("KeyVault:MySetings:");
             //opts.ConfigureRefresh(refr => refr.Register("*", true));
@@ -67,10 +69,10 @@ internal class Program
         IConfiguration conf = builder.Build();
 
 
-        Console.WriteLine(conf["geheimpje"]);
-        //Console.WriteLine(conf["KlantA:KeyVault:BackgroundColor"]);
-        //Console.WriteLine(conf["ConnectionString"]);
-        //Console.WriteLine(conf["Gehiem"]);
+       Console.WriteLine(conf["Geheim"]);
+        Console.WriteLine(conf["KlantA:KeyVault:BackgroundColor"]);
+        Console.WriteLine(conf["ConnectionString"]);
+        Console.WriteLine(conf["Gehiem"]);
         //Task.Delay(35000).ContinueWith(pt=>   Console.WriteLine(conf["MySetings:hello"]));
         //Console.ReadLine();
         //Console.WriteLine($"{conf["Color"]}");

@@ -8,13 +8,13 @@ namespace EvtHubClient;
 
 class Program
 {
-    private static string conStr = "Endpoint=sb://ps-hup.servicebus.windows.net/;SharedAccessKeyName=schrijvert;SharedAccessKey=qtmtNjczXG1IjKyhXFYdPQOEEzyldhUyR+AEhPmkVfs=;EntityPath=hupholland";
-    private static string hubName = "hupholland";
+    private static string conStr = "Endpoint=sb://ps-platform.servicebus.windows.net/;SharedAccessKeyName=Schrijvert;SharedAccessKey=HqyFkSC9iSmxc0P08C3GZQ5z8EWON0IBQ+AEhL70DL8=;EntityPath=klanta";
+    private static string hubName = "klanta";
 
     static async Task Main(string[] args)
     {
-        var options = new CreateBatchOptions { PartitionId = "1" };
-        var opts = new SendEventOptions { PartitionId = "2" };
+       // var options = new CreateBatchOptions { PartitionId = "1" };
+       // var opts = new SendEventOptions { PartitionId = "2" };
         
         await using (var producerClient = new EventHubProducerClient(conStr, hubName))
         {

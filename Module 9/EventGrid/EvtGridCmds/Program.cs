@@ -1,17 +1,14 @@
 ﻿using Azure;
 using Azure.Messaging.EventGrid;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using static System.Net.WebRequestMethods;
+
 
 namespace EvtGridCmds;
 
 class Program
 {
-    static string topicHost = "ps-topic.westeurope-1.eventgrid.azure.net";
+    static string topicHost = "ps-grid.westeurope-1.eventgrid.azure.net";
     static string topicEP = $"https://{topicHost}/api/events";
-    static string topicKey = "";
+    static string topicKey = "9hheCqnmSKJooBMSqGhBlcGILy7oCT4qWSwihlNOwc8sodpI7XsAJQQJ99CCAC5RqLJXJ3w3AAABAZEGLRkQ";
 
     static async Task Main(string[] args)
     {

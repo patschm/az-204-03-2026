@@ -3,7 +3,7 @@ using Microsoft.Identity.Client;
 
 internal class Program
 {
-    private static string ServiceUrl = "https://localhost:7266/";
+    private static string ServiceUrl = "https://localhost:7033/";
     private static async Task Main(string[] args)
     {
         await DoTheCodeFlowAsync();
@@ -19,23 +19,23 @@ internal class Program
         //    This prepares Code Grant Flow
         // 2) Set Redirect Uri to http://localhost (must be http. Port is optional)
         var bld = PublicClientApplicationBuilder
-            .Create("e96ce23c-91ff-407d-92e2-4aefb321d62e")
+            .Create("be043e6f-ba51-46ac-a182-d5cd3dbd419c")
             .WithAuthority(AzureCloudInstance.AzurePublic, "030b09d5-7f0f-40b0-8c01-03ac319b2d71")
             .WithRedirectUri("http://localhost:9898/");  // http scheme only!
 
         var app = bld.Build();
         // .AcquireTokenByUsernamePassword
-        var token = await app.AcquireTokenInteractive(
-            new string[] { "api://e96ce23c-91ff-407d-92e2-4aefb321d62e/Lezen" })
+        var response = await app.AcquireTokenInteractive(
+            new string[] { "api://dad793c6-4ca0-4f83-8a1e-c2949790e2b0/AlgemeneToegang" })
             .ExecuteAsync();
 
-        Console.WriteLine(token.AccessToken);
+        Console.WriteLine(response.AccessToken);
 
         var client = new HttpClient();
         client.BaseAddress = new Uri(ServiceUrl);
 
         client.DefaultRequestHeaders.Authorization =
-            new AuthenticationHeaderValue("Bearer", token.AccessToken);
+            new AuthenticationHeaderValue("Bearer", response.AccessToken);
 
         string data = await client.GetStringAsync("weatherforecast");
         Console.WriteLine(data);
