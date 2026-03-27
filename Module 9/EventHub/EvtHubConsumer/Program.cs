@@ -11,10 +11,10 @@ namespace EvtHubConsumer;
 
 class Program
 {
-    private const string conStr = "Endpoint=sb://ps-platform.servicebus.windows.net/;SharedAccessKeyName=Lezert;SharedAccessKey=umJ2Ne9GeIOZL+QdTNWquteHeBS6cO+/0+AEhNY+tTs=;EntityPath=klanta";
+    private const string conStr = "";
     private const string hubName = "klanta";
 
-    private const string checkpointStorage = "DefaultEndpointsProtocol=https;AccountName=psstoring;AccountKey=efp3cjVWxDumjy6yFbcRwWBtuYbr6QxR4LARI2/sJkl/hnSKPmvfi4KNbEZKeToaLeKHBzIQfryY+ASttHwGfQ==;EndpointSuffix=core.windows.net";
+    private const string checkpointStorage = "";
 
     static async Task Main(string[] args)
     {
